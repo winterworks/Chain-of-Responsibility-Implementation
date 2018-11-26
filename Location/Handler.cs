@@ -4,14 +4,17 @@ namespace Location
 {
     public abstract class Handler
     {
-        public Handler nextHandler { private get; set; }
+        public Handler NextHandler { private get; set; }
+        protected abstract bool execute();
 
         public void Handle()
         {
+            // If the executing is a success there is no need to continue handling, instead return
             if (execute()) return;
-            if (nextHandler != null)
+            // If it is the end of the chain
+            if (NextHandler != null)
             {
-                nextHandler.Handle();
+                NextHandler.Handle();
             }
             else
             {
@@ -19,6 +22,5 @@ namespace Location
             }
         }
 
-        protected abstract bool execute();
     }
 }

@@ -7,7 +7,7 @@ namespace Location
         protected override bool execute()
         {
             Console.WriteLine("- Fetching location from GPS");
-            if (!RandomContainer.getRandomBool())
+            if (RandomContainer.getRandomBool())
             {
                 Console.WriteLine("Result found from GPS");
                 return true;
